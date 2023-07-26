@@ -3,6 +3,7 @@
   const { Telegraf } = require("telegraf");
   const { message } = require("telegraf/filters");
   const { getCurrency } = require("./currency");
+
   const bot = new Telegraf(process.env.TOKEN);
 
   bot.start((ctx) => ctx.reply("Привет, выбери команду из главного меню)"));
@@ -12,7 +13,7 @@
   });
 
   // bot.on(message("text"), (ctx) => {
-
+  //   console.log(ctx.message);
   // });
 
   bot.launch();
