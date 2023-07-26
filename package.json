@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js"
+    "build": "node main.js"
   },
   "author": "twogog",
   "license": "ISC",
