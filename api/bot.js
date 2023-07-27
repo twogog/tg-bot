@@ -34,6 +34,7 @@ module.exports = async (request, response) => {
 
       // Send our new message back in Markdown and
       // wait for the request to finish
+      console.log(message);
       await bot.sendMessage(id, message, { parse_mode: "Markdown" });
     }
   } catch (error) {
@@ -41,7 +42,6 @@ module.exports = async (request, response) => {
     // can log it into the Vercel console
     console.error("Error sending message");
     console.log(error.toString());
-    response.status(200).json({ error });
   }
 
   // Acknowledge the message with Telegram
