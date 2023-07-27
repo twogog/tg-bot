@@ -18,10 +18,10 @@ module.exports = async (request, response) => {
     });
     // Retrieve the POST request body that gets sent from Telegram
     const { body } = request;
-    response.status(200).json(body);
+    response.status(200).json({ body });
 
     // Ensure that this is a message being sent
-    if (body.message) {
+    if (body?.message) {
       // Retrieve the ID for this chat
       // and the text that the user sent
       const {
