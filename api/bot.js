@@ -1,11 +1,10 @@
+process.env.NTBA_FIX_319 = "test";
+const { Telegraf } = require("telegraf");
+const { message } = require("telegraf/filters");
+const { getCurrency } = require("../currency");
+
 module.exports = async (request, response) => {
   try {
-    process.env.NTBA_FIX_319 = "test";
-
-    const { Telegraf } = require("telegraf");
-    const { message } = require("telegraf/filters");
-    const { getCurrency } = require("../currency");
-
     const bot = new Telegraf(process.env.TOKEN);
 
     // Retrieve the POST request body that gets sent from Telegram
@@ -21,10 +20,7 @@ module.exports = async (request, response) => {
       } = body.message;
       // Send our new message back in Markdown and
       // wait for the request to finish
-      bot.on(message("text"), (ctx) => {
-        ctx.glob.silent.bob.tmt;
-        ctx.reply("Hello");
-      });
+      bot.on(message("text"), (ctx) => ctx.reply("Hello"));
 
       bot.launch({
         webhook: {
@@ -33,10 +29,10 @@ module.exports = async (request, response) => {
 
           // Port to listen on; e.g.: 8080
           port: process.env.PORT || 8080,
+          hookPath: process.env.DOMAIN + "/bot/api",
         },
       });
     }
-    console.log(body.message);
   } catch (error) {
     // If there was an error sending our message then we
     // can log it into the Vercel console
