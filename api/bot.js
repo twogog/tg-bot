@@ -7,7 +7,6 @@ module.exports = async (request, response) => {
     const { getCurrency } = require("../currency");
 
     const bot = new Telegraf(process.env.TOKEN);
-
     bot.launch({
       webhook: {
         // Public domain for webhook; e.g.: example.com
@@ -19,7 +18,8 @@ module.exports = async (request, response) => {
     });
     // Retrieve the POST request body that gets sent from Telegram
     const { body } = request;
-    console.log(body);
+    response.send(body);
+
     // Ensure that this is a message being sent
     if (body.message) {
       // Retrieve the ID for this chat
