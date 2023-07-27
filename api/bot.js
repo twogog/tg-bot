@@ -5,7 +5,20 @@ const { getCurrency } = require("../currency");
 const bot = new Telegraf(process.env.TOKEN);
 
 bot.start((ctx) => ctx.reply("Welcome"));
-bot.command("currency", (ctx) => getCurrency(ctx));
+bot.command("currency", async (ctx) => {
+  await fetch(url)
+    .then((r) => r.json())
+    .then((r) =>
+      Object.entries(r.Valute)
+        .filter((v) => ["EUR", "USD"].includes(v[0]))
+        .forEach((ar) => {
+          const [name, info] = ar;
+          const { Name, Previous, Value } = info;
+          console.log(Name, Previous);
+          ctx.reply(`${Name}: предыдущий - ${Previous}; нынешний - ${Value}`);
+        })
+    );
+});
 
 module.exports = async (request, response) => {
   try {
