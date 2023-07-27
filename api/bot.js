@@ -3,34 +3,14 @@ const { Telegraf } = require("telegraf");
 const { message } = require("telegraf/filters");
 const { getCurrency } = require("../currency");
 
+const bot = new Telegraf(process.env.TOKEN);
+bot.on(message("text"), (ctx) => ctx.reply("Hello"));
+
 module.exports = async (request, response) => {
   try {
-    const bot = new Telegraf(process.env.TOKEN);
-
-    // Retrieve the POST request body that gets sent from Telegram
-    const { body } = request;
-
     // Ensure that this is a message being sent
     if (body?.message) {
-      // Retrieve the ID for this chat
-      // and the text that the user sent
-      const {
-        chat: { id },
-        text,
-      } = body.message;
-
-      bot.on(message("text"), (ctx) => ctx.reply("Hello"));
-
-      bot.launch({
-        webhook: {
-          // Public domain for webhook; e.g.: example.com
-          domain: process.env.DOMAIN,
-
-          // Port to listen on; e.g.: 8080
-          port: process.env.PORT || 8080,
-          // hookPath: "/api/bot",
-        },
-      });
+      await bot.handleUpdate(request.body);
     }
   } catch (error) {
     // If there was an error sending our message then we
