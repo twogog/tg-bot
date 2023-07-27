@@ -19,7 +19,6 @@ module.exports = async (request, response) => {
         chat: { id },
         text,
       } = body.message;
-
       // Send our new message back in Markdown and
       // wait for the request to finish
       bot.on(message("text"), (ctx) => {
@@ -27,8 +26,17 @@ module.exports = async (request, response) => {
         ctx.reply("Hello");
       });
 
-      bot.launch();
+      bot.launch({
+        webhook: {
+          // Public domain for webhook; e.g.: example.com
+          domain: process.env.DOMAIN,
+
+          // Port to listen on; e.g.: 8080
+          port: process.env.PORT || 8080,
+        },
+      });
     }
+    console.log(body.message);
   } catch (error) {
     // If there was an error sending our message then we
     // can log it into the Vercel console
