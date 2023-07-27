@@ -18,7 +18,6 @@ module.exports = async (request, response) => {
     });
     // Retrieve the POST request body that gets sent from Telegram
     const { body } = request;
-    response.status(200).json({ body });
 
     // Ensure that this is a message being sent
     if (body?.message) {
@@ -42,6 +41,7 @@ module.exports = async (request, response) => {
     // can log it into the Vercel console
     console.error("Error sending message");
     console.log(error.toString());
+    response.status(200).json({ error });
   }
 
   // Acknowledge the message with Telegram
