@@ -28,10 +28,6 @@ module.exports = async (request, response) => {
         text,
       } = body.message;
 
-      // Create a message to send back
-      // We can use Markdown inside this
-      const message = `✅ Thanks for your message: *"${text}"*\nHave a great day! 👋🏻`;
-
       // Send our new message back in Markdown and
       // wait for the request to finish
       console.log(id, text);
