@@ -1,10 +1,11 @@
 process.env.NTBA_FIX_319 = "test";
 const { Telegraf } = require("telegraf");
-const { message } = require("telegraf/filters");
 const { getCurrency } = require("../currency");
 
 const bot = new Telegraf(process.env.TOKEN);
-bot.on(message("text"), (ctx) => ctx.reply("Hello"));
+
+bot.start((ctx) => ctx.reply("Welcome"));
+bot.command("currency", (ctx) => getCurrency(ctx));
 
 module.exports = async (request, response) => {
   try {
