@@ -9,6 +9,7 @@ function getCurrency(ctx) {
         .forEach((ar) => {
           const [name, info] = ar;
           const { Name, Previous, Value } = info;
+          console.log(Name, Previous);
           ctx.reply(`${Name}: предыдущий - ${Previous}; нынешний - ${Value}`);
         })
     );
