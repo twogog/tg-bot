@@ -18,8 +18,7 @@ module.exports = async (request, response) => {
         chat: { id },
         text,
       } = body.message;
-      // Send our new message back in Markdown and
-      // wait for the request to finish
+
       bot.on(message("text"), (ctx) => ctx.reply("Hello"));
 
       bot.launch({
@@ -29,7 +28,7 @@ module.exports = async (request, response) => {
 
           // Port to listen on; e.g.: 8080
           port: process.env.PORT || 8080,
-          hookPath: process.env.DOMAIN + "/bot/api",
+          hookPath: "/api/bot",
         },
       });
     }
