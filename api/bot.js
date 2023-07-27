@@ -7,15 +7,15 @@ module.exports = async (request, response) => {
     const { getCurrency } = require("../currency");
 
     const bot = new Telegraf(process.env.TOKEN);
-    bot.launch({
-      webhook: {
-        // Public domain for webhook; e.g.: example.com
-        domain: process.env.DOMAIN,
+    // bot.launch({
+    //   webhook: {
+    //     // Public domain for webhook; e.g.: example.com
+    //     domain: process.env.DOMAIN,
 
-        // Port to listen on; e.g.: 8080
-        port: process.env.PORT || 8080,
-      },
-    });
+    //     // Port to listen on; e.g.: 8080
+    //     port: process.env.PORT || 8080,
+    //   },
+    // });
     // Retrieve the POST request body that gets sent from Telegram
     const { body } = request;
 
