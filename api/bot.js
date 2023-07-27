@@ -15,10 +15,6 @@ module.exports = async (request, response) => {
 
         // Port to listen on; e.g.: 8080
         port: process.env.PORT || 8080,
-
-        // Optional path to listen for.
-        // `bot.secretPathComponent()` will be used by default
-        hookPath: webhookPath || process.env.DOMAIN,
       },
     });
     // Retrieve the POST request body that gets sent from Telegram
