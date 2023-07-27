@@ -9,7 +9,7 @@ bot.on(message("text"), (ctx) => ctx.reply("Hello"));
 module.exports = async (request, response) => {
   try {
     // Ensure that this is a message being sent
-    if (body?.message) {
+    if (request?.body) {
       await bot.handleUpdate(request.body);
     }
   } catch (error) {
