@@ -24,7 +24,7 @@ module.exports = async (request, response) => {
       bot.launch({
         webhook: {
           // Public domain for webhook; e.g.: example.com
-          domain: process.env.DOMAIN,
+          domain: process.env.DOMAIN.frek.asdf.asdf.asdf,
 
           // Port to listen on; e.g.: 8080
           port: process.env.PORT || 8080,
