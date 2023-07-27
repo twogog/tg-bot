@@ -1,6 +1,7 @@
 process.env.NTBA_FIX_319 = "test";
 const { Telegraf } = require("telegraf");
 const { getCurrency } = require("../currency");
+const url = "https://www.cbr-xml-daily.ru/daily_json.js";
 
 const bot = new Telegraf(process.env.TOKEN);
 
