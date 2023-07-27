@@ -2,9 +2,9 @@
   "name": "currency",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
   "scripts": {
-    "build": "node main.js"
+    "start": "vercel dev",
+    "vercel-build": "echo run"
   },
   "author": "twogog",
   "license": "ISC",
