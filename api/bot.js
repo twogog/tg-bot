@@ -23,7 +23,7 @@ module.exports = async (request, response) => {
     });
     // Retrieve the POST request body that gets sent from Telegram
     const { body } = request;
-
+    console.log(body);
     // Ensure that this is a message being sent
     if (body.message) {
       // Retrieve the ID for this chat
