@@ -6,10 +6,10 @@ async function getCurrency(ctx) {
   const { Valute } = data;
   Object.entries(Valute)
     .filter((v) => ["EUR", "USD"].includes(v[0]))
-    .forEach((ar) => {
+    .forEach(async (ar) => {
       const [name, info] = ar;
       const { Name, Previous, Value } = info;
-      ctx.reply(`${Name}: предыдущий - ${Previous}; нынешний - ${Value}`);
+      await ctx.reply(`${Name}: предыдущий - ${Previous}; нынешний - ${Value}`);
     });
 }
 
