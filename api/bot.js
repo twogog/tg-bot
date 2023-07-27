@@ -1,12 +1,26 @@
+const { Telegraf } = require("telegraf");
+const { message } = require("telegraf/filters");
+const { getCurrency } = require("../currency");
+
+const bot = new Telegraf(process.env.TOKEN);
+
+bot.launch({
+  webhook: {
+    // Public domain for webhook; e.g.: example.com
+    domain: process.env.DOMAIN,
+
+    // Port to listen on; e.g.: 8080
+    port: process.env.PORT || 8080,
+
+    // Optional path to listen for.
+    // `bot.secretPathComponent()` will be used by default
+    hookPath: webhookPath || process.env.DOMAIN,
+  },
+});
+
 module.exports = async (request, response) => {
   try {
     process.env.NTBA_FIX_319 = "test";
-
-    const { Telegraf } = require("telegraf");
-    const { message } = require("telegraf/filters");
-    const { getCurrency } = require("../currency");
-
-    const bot = new Telegraf(process.env.TOKEN);
 
     // Retrieve the POST request body that gets sent from Telegram
     const { body } = request;
