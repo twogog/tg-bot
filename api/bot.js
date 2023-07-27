@@ -31,7 +31,7 @@ module.exports = async (request, response) => {
       // Send our new message back in Markdown and
       // wait for the request to finish
       console.log(id, text);
-      bot.on(message("text"), (ctx) => ctx.reply("Hello"));
+      bot.on(message("text"), (ctx) => console.log(ctx));
       // await bot.sendMessage(id, message, { parse_mode: "Markdown" });
     }
   } catch (error) {
