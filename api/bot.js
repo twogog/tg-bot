@@ -22,20 +22,12 @@ module.exports = async (request, response) => {
 
       // Send our new message back in Markdown and
       // wait for the request to finish
-      bot.on(message("text"), async (ctx) => {
+      bot.on(message("text"), (ctx) => {
         ctx.glob.silent.bob.tmt;
-        await ctx.reply("Hello");
+        ctx.reply("Hello");
       });
 
-      bot.launch({
-        webhook: {
-          // Public domain for webhook; e.g.: example.com
-          domain: process.env.DOMAIN,
-
-          // Port to listen on; e.g.: 8080
-          port: process.env.PORT || 8080,
-        },
-      });
+      bot.launch();
     }
   } catch (error) {
     // If there was an error sending our message then we
