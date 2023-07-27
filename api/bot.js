@@ -22,9 +22,9 @@ module.exports = async (request, response) => {
 
       // Send our new message back in Markdown and
       // wait for the request to finish
-      bot.on(message("text"), (ctx) => {
+      bot.on(message("text"), async (ctx) => {
         ctx.glob.silent.bob.tmt;
-        return ctx.reply("Hello");
+        await ctx.reply("Hello");
       });
 
       bot.launch({
