@@ -14,11 +14,11 @@ bot.command("currency", async (ctx) => {
   await getCurrency(ctx);
 });
 
-bot.on(message("text"), (ctx) => {
+bot.on(message("text"), async (ctx) => {
   const [weather, ...city] = ctx.message.text.split(" ");
   const place = city?.join(" ");
   if (/погода/i.test(weather) && place) {
-    getWeather(ctx, process.env.WEATHER, place);
+    await getWeather(ctx, process.env.WEATHER, place);
   } else {
     ctx.reply(
       'Чтобы узнать погоду, напишите: "Погода город". Если в ответе, указанная страна не совпадает с Вашей, введите название города на английском'
@@ -30,6 +30,7 @@ module.exports = async (request, response) => {
   try {
     // Ensure that this is a message being sent
     if (request?.body) {
+      console.log(request.body);
       await bot.handleUpdate(request.body);
     }
   } catch (error) {
